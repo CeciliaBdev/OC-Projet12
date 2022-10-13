@@ -1,0 +1,11 @@
+.linkUser {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.linkUser a {
+  text-decoration: none;
+  margin: 20px;
+  font-size: 24px;
+}
