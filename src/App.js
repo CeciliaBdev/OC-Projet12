@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Accueil from './Pages/Home.js'
 import Profil from './Pages/ProfilPage.js'
+import '../src/styles/App.css'
 
 function App() {
   return (
