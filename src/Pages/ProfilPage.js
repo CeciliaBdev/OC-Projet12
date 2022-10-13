@@ -1,5 +1,3 @@
-import * as Mock from '../services/data.js'
-
 function Profil() {
   console.log('test')
 
