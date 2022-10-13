@@ -12,3 +12,8 @@
   color: #fff;
   font-size: 18px;
 }
+.sidebar {
+  width: 100px;
+  height: 100vh;
+  background: #000;
+}

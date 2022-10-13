@@ -5,7 +5,7 @@ import '../styles/Home.css'
 
 function Accueil() {
   return (
-    <div>
+    <div className="home">
       <NavBar />
       <div className="linkUser">
         <Link to="user/12">User 1</Link>

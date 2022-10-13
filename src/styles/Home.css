@@ -1,8 +1,9 @@
+/*  */
 .linkUser {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 50vh;
+  left: 40vw;
+  margin: 0 auto;
 }
 .linkUser a {
   text-decoration: none;
