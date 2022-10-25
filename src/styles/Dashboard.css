@@ -1,5 +1,47 @@
-.dashboard {
+/* page */
+.dashboard_container {
   position: absolute;
-  top: 150px;
-  left: 200px;
+  top: 120px;
+  left: 150px;
+  width: 80%;
+  height: 90%;
+}
+.dashboard {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  height: 75%;
+}
+
+/* ensemble des cartes calories - glucides .. */
+.containerInfos {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.cardInfos {
+  background-color: #fbfbfb;
+  border-radius: 5px;
+  width: 200px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.cardInfos img {
+  width: 60px;
+}
+.graph_container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.activity {
+  background-color: #fbfbfb;
+  width: 100%;
+  height: 50%;
 }
