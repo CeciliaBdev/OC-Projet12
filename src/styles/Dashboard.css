@@ -52,3 +52,13 @@
   left: 20px;
   font-size: 12px;
 }
+.customTooltip {
+  background-color: #e60000;
+  width: 60px;
+  height: 70px;
+  line-height: 30px;
+  color: white;
+}
+.customTooltip p {
+  font-size: 10px;
+}

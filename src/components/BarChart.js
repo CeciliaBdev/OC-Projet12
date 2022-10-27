@@ -10,10 +10,22 @@ import {
 } from 'recharts'
 
 // données axe X - jour et non date entière
-function customTick(day) {
+const customTick = (day) => {
   // console.log(day.slice(9))
   return day.slice(9)
 }
+// stylisation custonTooltip
+const customTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="customTooltip">
+        <p>{payload[0].value}kg</p>
+        <p>{payload[1].value}Kcal</p>
+      </div>
+    )
+  }
+}
+
 function Bargraph({ activity }) {
   return (
     <div className="activity">
@@ -47,7 +59,13 @@ function Bargraph({ activity }) {
             tickCount={4}
           />
           <YAxis hide yAxisId={2} />
-          <Tooltip />
+          <Tooltip
+            content={customTooltip}
+            labelStyle={{
+              display: 'none',
+            }}
+            wrapperStyle={{ outline: 'none ' }}
+          />
           <Legend
             verticalAlign="top"
             align="right"
