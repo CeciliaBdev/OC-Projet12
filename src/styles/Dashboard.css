@@ -11,14 +11,15 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  height: 75%;
+  height: 70%;
+  /* border: 1px solid red; */
 }
 
 /* ensemble des cartes calories - glucides .. */
 .containerInfos {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  justify-content: space-between;
 }
 .cardInfos {
   background-color: #fbfbfb;
@@ -38,10 +39,16 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }
 .activity {
   background-color: #fbfbfb;
   width: 100%;
   height: 50%;
+}
+.activity p {
+  position: relative;
+  top: 10px;
+  left: 20px;
+  font-size: 12px;
 }

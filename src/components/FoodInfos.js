@@ -7,35 +7,33 @@ import '../styles/Dashboard.css'
 
 function FoodInfos({ keyData }) {
   return (
-    <div>
-      <div className="containerInfos">
-        <div className="cardInfos">
-          <img src={calories} alt="" />
-          <div>
-            <p>{keyData?.calorieCount} Kcal</p>
-            <span>Calories</span>
-          </div>
+    <div className="containerInfos">
+      <div className="cardInfos">
+        <img src={calories} alt="" />
+        <div>
+          <p>{keyData?.calorieCount} Kcal</p>
+          <span>Calories</span>
         </div>
-        <div className="cardInfos">
-          <img src={proteines} alt="" />
-          <div>
-            <p>{keyData?.proteinCount}g</p>
-            <span>Proteines</span>
-          </div>
+      </div>
+      <div className="cardInfos">
+        <img src={proteines} alt="" />
+        <div>
+          <p>{keyData?.proteinCount}g</p>
+          <span>Proteines</span>
         </div>
-        <div className="cardInfos">
-          <img src={glucides} alt="" />
-          <div>
-            <p>{keyData?.carbohydrateCount}g</p>
-            <span>Glucides</span>
-          </div>
+      </div>
+      <div className="cardInfos">
+        <img src={glucides} alt="" />
+        <div>
+          <p>{keyData?.carbohydrateCount}g</p>
+          <span>Glucides</span>
         </div>
-        <div className="cardInfos">
-          <img src={lipides} alt="" />
-          <div>
-            <p>{keyData?.lipidCount}g</p>
-            <span>Lipides</span>
-          </div>
+      </div>
+      <div className="cardInfos">
+        <img src={lipides} alt="" />
+        <div>
+          <p>{keyData?.lipidCount}g</p>
+          <span>Lipides</span>
         </div>
       </div>
     </div>
