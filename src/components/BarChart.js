@@ -8,6 +8,7 @@ import {
   BarChart,
   ResponsiveContainer,
 } from 'recharts'
+import propTypes from 'prop-types'
 
 // données axe X - jour et non date entière
 const customTick = (day) => {
@@ -97,5 +98,16 @@ function Bargraph({ activity }) {
       </ResponsiveContainer>
     </div>
   )
+}
+
+//proptypes
+Bargraph.propTypes = {
+  activity: propTypes.arrayOf(
+    propTypes.shape({
+      day: propTypes.string,
+      kilogram: propTypes.number,
+      calories: propTypes.number,
+    })
+  ),
 }
 export default Bargraph
