@@ -45,6 +45,7 @@
   background-color: #fbfbfb;
   width: 100%;
   height: 50%;
+  border-radius: 5px;
 }
 .activity p {
   position: relative;
@@ -61,4 +62,17 @@
 }
 .customTooltip p {
   font-size: 10px;
+}
+.graphs {
+  border: 1px solid black;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+/* ne pas oublier le border radius 5px sur les 3 petits graphs */
+.graphs div {
+  /* border: 1px solid red; */
+  width: 32%;
+  height: 100%;
 }
