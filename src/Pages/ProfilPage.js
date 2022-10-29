@@ -2,6 +2,8 @@ import NavBar from '../components/NavBar.js'
 import UserInfos from '../components/UserInfos.js'
 import FoodInfos from '../components/FoodInfos.js'
 import Bargraph from '../components/BarChart.js'
+import Radargraph from '../components/RadarChart.js'
+import RadialChart from '../components/RadialBarChart.js'
 
 import '../styles/Dashboard.css'
 import React, { useEffect, useState } from 'react'
@@ -12,8 +14,6 @@ import {
   getUserPerformance,
 } from '../services/callApi.js'
 
-import Radargraph from '../components/RadarChart.js'
-
 function Profil() {
   //hooks
   const { id } = useParams()
@@ -22,6 +22,7 @@ function Profil() {
   const [activity, setActivity] = useState() //activité
   // const [averageSessions, setAverageSessions] = useState([]) //moyenne session
   const [performance, setPerformance] = useState([])
+  const [userScore, setUserScore] = useState()
 
   useEffect(() => {
     getUserMainData(id).then((values) => {
@@ -30,6 +31,8 @@ function Profil() {
       setUserData(values['data']['userInfos']['firstName']) //firstname
       // console.log(values['data']['keyData'])
       setKeyData(values['data']['keyData']) // keyData
+      // console.log(values['data']['todayScore'])
+      setUserScore(values['data']['todayScore'] || values['data']['score'])
     })
     getUserActivity(id).then((values) => {
       // console.log('values', values['data']['sessions'])
@@ -42,131 +45,13 @@ function Profil() {
     //   })
     getUserPerformance(id)
       .then((values) => {
-        console.log(values['data']['data'])
+        // console.log(values['data']['data'])
         setPerformance(values['data']['data'])
       })
       .catch((error) => {
         console.log(error)
       })
   }, [id])
-
-  // if (userData === undefined) {
-  //   console.log('error data')
-  // }
-  // const data = [
-  //   {
-  //     subject: 'Math',
-  //     A: 120,
-  //     B: 110,
-  //     fullMark: 150,
-  //   },
-  //   {
-  //     subject: 'Chinese',
-  //     A: 98,
-  //     B: 130,
-  //     fullMark: 150,
-  //   },
-  //   {
-  //     subject: 'English',
-  //     A: 86,
-  //     B: 130,
-  //     fullMark: 150,
-  //   },
-  //   {
-  //     subject: 'Geography',
-  //     A: 99,
-  //     B: 100,
-  //     fullMark: 150,
-  //   },
-  //   {
-  //     subject: 'Physics',
-  //     A: 85,
-  //     B: 90,
-  //     fullMark: 150,
-  //   },
-  //   {
-  //     subject: 'History',
-  //     A: 65,
-  //     B: 85,
-  //     fullMark: 150,
-  //   },
-  // ]
-  // const USER_PERFORMANCE = [
-  //   {
-  //     userId: 12,
-  //     kind: {
-  //       1: 'cardio',
-  //       2: 'energy',
-  //       3: 'endurance',
-  //       4: 'strength',
-  //       5: 'speed',
-  //       6: 'intensity',
-  //     },
-  //     data: [
-  //       {
-  //         value: 80,
-  //         kind: 1,
-  //       },
-  //       {
-  //         value: 120,
-  //         kind: 2,
-  //       },
-  //       {
-  //         value: 140,
-  //         kind: 3,
-  //       },
-  //       {
-  //         value: 50,
-  //         kind: 4,
-  //       },
-  //       {
-  //         value: 200,
-  //         kind: 5,
-  //       },
-  //       {
-  //         value: 90,
-  //         kind: 6,
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     userId: 18,
-  //     kind: {
-  //       1: 'cardio',
-  //       2: 'energy',
-  //       3: 'endurance',
-  //       4: 'strength',
-  //       5: 'speed',
-  //       6: 'intensity',
-  //     },
-  //     data: [
-  //       {
-  //         value: 200,
-  //         kind: 1,
-  //       },
-  //       {
-  //         value: 240,
-  //         kind: 2,
-  //       },
-  //       {
-  //         value: 80,
-  //         kind: 3,
-  //       },
-  //       {
-  //         value: 80,
-  //         kind: 4,
-  //       },
-  //       {
-  //         value: 220,
-  //         kind: 5,
-  //       },
-  //       {
-  //         value: 110,
-  //         kind: 6,
-  //       },
-  //     ],
-  //   },
-  // ]
 
   return (
     <div>
@@ -183,7 +68,9 @@ function Profil() {
                   <Radargraph performance={performance} />
                 </div>
 
-                <div></div>
+                <div>
+                  <RadialChart userScore={userScore} />
+                </div>
               </div>
             </div>
             <FoodInfos keyData={keyData} />

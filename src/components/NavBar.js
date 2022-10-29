@@ -3,6 +3,7 @@ import icon_muscu from '../assets/icon_muscu.svg'
 import icon_bike from '../assets/icon_bike.svg'
 import icon_swim from '../assets/icon_swim.svg'
 import icon_yoga from '../assets/icon_yoga.svg'
+import copyright from '../assets/copyright.png'
 
 import '../styles/NavBar.css'
 
@@ -23,6 +24,15 @@ function NavBar() {
           <img src={icon_bike} alt="" />
           <img src={icon_muscu} alt="" />
         </div>
+        <img
+          src={copyright}
+          alt=""
+          style={{
+            position: 'absolute',
+            bottom: '-70px',
+            left: '25px',
+          }}
+        />
       </div>
     </div>
   )
