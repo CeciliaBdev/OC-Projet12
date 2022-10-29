@@ -44,7 +44,6 @@
 
 .activity {
   background-color: #fbfbfb;
-
   height: 50%;
   border-radius: 5px;
 }
@@ -53,10 +52,6 @@
   top: 10px;
   left: 20px;
   font-size: 12px;
-}
-.radial {
-  height: 50%;
-  border-radius: 5px;
 }
 
 .customTooltip {
@@ -70,7 +65,7 @@
   font-size: 10px;
 }
 .graphs {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   height: 50%;
   display: flex;
