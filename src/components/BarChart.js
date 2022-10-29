@@ -49,6 +49,7 @@ function Bargraph({ activity }) {
             axisLine={false}
             domain={['dataMin + 1', 'dataMax + 1']}
             tickFormatter={customTick}
+            padding={{ left: -40, right: -40 }}
           />
           <YAxis
             orientation="right"
@@ -58,6 +59,7 @@ function Bargraph({ activity }) {
             domain={['dataMin - 1', 'dataMax + 1']}
             tickLine={false}
             tickCount={4}
+            dx={50}
           />
           <YAxis hide yAxisId={2} />
           <Tooltip

@@ -41,9 +41,10 @@
   flex-direction: column;
   gap: 30px;
 }
+
 .activity {
   background-color: #fbfbfb;
-  width: 100%;
+
   height: 50%;
   border-radius: 5px;
 }
@@ -53,6 +54,11 @@
   left: 20px;
   font-size: 12px;
 }
+.radial {
+  height: 50%;
+  border-radius: 5px;
+}
+
 .customTooltip {
   background-color: #e60000;
   width: 60px;

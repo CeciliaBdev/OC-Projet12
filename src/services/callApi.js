@@ -4,6 +4,7 @@ import axios from 'axios'
 // @function getUserMainData
 // @function getUserActivity
 // @function getUserAverageSession
+// @function getUserPerformance
 
 export const getUserMainData = async (id) => {
   try {
