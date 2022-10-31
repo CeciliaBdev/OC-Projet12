@@ -4,9 +4,22 @@
   top: 50vh;
   left: 40vw;
   margin: 0 auto;
+  display: flex;
+  gap: 100px;
 }
 .linkUser a {
   text-decoration: none;
   margin: 20px;
   font-size: 24px;
+  color: black;
+  text-align: center;
+}
+.linkUser img {
+  width: 180px;
+  height: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.user {
+  display: flex;
+  flex-direction: column;
 }

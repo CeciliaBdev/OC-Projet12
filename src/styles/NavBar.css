@@ -9,8 +9,8 @@
   padding: 0 30px;
 }
 /* links a remplacés par des p */
-.navbar p {
-  /* text-decoration: none; */
+.navbar a {
+  text-decoration: none;
   color: #fff;
   font-size: 18px;
 }
