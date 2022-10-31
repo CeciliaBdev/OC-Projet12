@@ -4,6 +4,7 @@ import FoodInfos from '../components/FoodInfos.js'
 import Bargraph from '../components/BarChart.js'
 import Radargraph from '../components/RadarChart.js'
 import RadialChart from '../components/RadialBarChart.js'
+import Linegraph from '../components/LineChart.js'
 
 import '../styles/Dashboard.css'
 import React, { useEffect, useState } from 'react'
@@ -12,6 +13,7 @@ import {
   getUserMainData,
   getUserActivity,
   getUserPerformance,
+  getUserAverageSession,
 } from '../services/callApi.js'
 
 function Profil() {
@@ -20,7 +22,7 @@ function Profil() {
   const [userData, setUserData] = useState() // firstname
   const [keyData, setKeyData] = useState() // keyData
   const [activity, setActivity] = useState() //activité
-  // const [averageSessions, setAverageSessions] = useState([]) //moyenne session
+  const [averageSessions, setAverageSessions] = useState([]) //moyenne session
   const [performance, setPerformance] = useState([])
   const [userScore, setUserScore] = useState()
 
@@ -38,11 +40,10 @@ function Profil() {
       // console.log('values', values['data']['sessions'])
       setActivity(values['data']['sessions'])
     })
-    // getUserAverageSession(id)
-    //   .then((values) => {
-    //     console.log('values sessions', values['data']['sessions'])
-    //     setAverageSessions('values', values['data']['sessions'])
-    //   })
+    getUserAverageSession(id).then((values) => {
+      // console.log('values sessions', values['data']['sessions'])
+      setAverageSessions(values['data']['sessions'])
+    })
     getUserPerformance(id)
       .then((values) => {
         // console.log(values['data']['data'])
@@ -63,7 +64,9 @@ function Profil() {
             <div className="graph_container">
               <Bargraph activity={activity} />
               <div className="graphs">
-                <div></div>
+                <div>
+                  <Linegraph averageSessions={averageSessions} />
+                </div>
                 <div>
                   <Radargraph performance={performance} />
                 </div>

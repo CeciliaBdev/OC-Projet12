@@ -64,6 +64,14 @@
 .customTooltip p {
   font-size: 10px;
 }
+.tooltip_linechart p {
+  background-color: white;
+  width: 65px;
+  height: 35px;
+  padding: 10px;
+  text-align: center;
+}
+
 .graphs {
   /* border: 1px solid black; */
   width: 100%;
