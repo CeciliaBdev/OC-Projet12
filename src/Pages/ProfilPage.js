@@ -46,7 +46,7 @@ function Profil() {
     })
     getUserPerformance(id)
       .then((values) => {
-        // console.log(values['data']['data'])
+        //console.log(values['data']['data'])
         setPerformance(values['data']['data'])
       })
       .catch((error) => {
