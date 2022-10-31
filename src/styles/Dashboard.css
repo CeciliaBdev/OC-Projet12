@@ -3,7 +3,7 @@
   position: absolute;
   top: 120px;
   left: 150px;
-  width: 80%;
+  width: 80vw;
   height: 90%;
 }
 .dashboard {
@@ -11,7 +11,8 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  height: 70%;
+  height: 80%;
+  width: 100%;
   /* border: 1px solid red; */
 }
 
@@ -20,6 +21,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* border: 1px solid black; */
 }
 .cardInfos {
   background-color: #fbfbfb;
@@ -34,9 +36,12 @@
 .cardInfos img {
   width: 60px;
 }
+.cardInfos p {
+  font-weight: bold;
+}
 .graph_container {
-  width: 80%;
-  height: 100%;
+  width: 75%;
+  height: 98%;
   display: flex;
   flex-direction: column;
   gap: 30px;

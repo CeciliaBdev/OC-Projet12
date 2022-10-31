@@ -6,6 +6,7 @@ import {
   Tooltip,
   Line,
   Rectangle,
+  ResponsiveContainer,
 } from 'recharts'
 import { PropTypes } from 'prop-types'
 
@@ -55,55 +56,67 @@ function CustomTooltip({ active, payload }) {
 
 function Linegraph({ averageSessions }) {
   return (
-    <LineChart
-      width={330}
-      height={280}
-      data={averageSessions}
-      margin={{ top: 50, right: 10, left: -50, bottom: 10 }}
-      style={{ backgroundColor: '#FF0000', borderRadius: '5px' }}
-    >
-      <CartesianGrid vertical={false} horizontal={false} />
-      <XAxis
-        dataKey="day"
-        tickFormatter={Day}
-        interval="preserveStartEnd"
-        tickLine={false}
-        axisLine={false}
-        tick={{
-          fill: '#FFFFFF',
-          fontWeight: 500,
-          fontSize: 12,
-        }}
-        opacity={0.5}
-      />
-      <YAxis
-        dataKey="sessionLength"
-        axisLine={false}
-        tickLine={false}
-        tick={false}
-        domain={['dataMin - 10', 'dataMax + 5']}
-      />
-      <Tooltip
-        cursor={<CustomCursor />}
-        content={<CustomTooltip />}
-        wrapperStyle={{ outlineStyle: 'none' }}
-      />
-      <Line
-        type="natural"
-        dot={false}
-        dataKey="sessionLength"
-        stroke="#ffffff"
-        strokeWidth={3}
-        activeDot={{ stroke: 'rgba(255,255,255, 0.6)', strokeWidth: 10, r: 5 }}
-        opacity={0.6}
-      />
-    </LineChart>
+    <ResponsiveContainer height={'100%'} width={'100%'}>
+      <LineChart
+        width={'100%'}
+        height={265}
+        data={averageSessions}
+        margin={{ top: 50, right: 10, left: -50, bottom: 10 }}
+        style={{ backgroundColor: '#FF0000', borderRadius: '5px' }}
+      >
+        <CartesianGrid vertical={false} horizontal={false} />
+        <XAxis
+          dataKey="day"
+          tickFormatter={Day}
+          interval="preserveStartEnd"
+          tickLine={false}
+          axisLine={false}
+          tick={{
+            fill: '#FFFFFF',
+            fontWeight: 500,
+            fontSize: 12,
+          }}
+          opacity={0.5}
+        />
+        <YAxis
+          dataKey="sessionLength"
+          axisLine={false}
+          tickLine={false}
+          tick={false}
+          domain={['dataMin - 10', 'dataMax + 5']}
+        />
+        <Tooltip
+          cursor={<CustomCursor />}
+          content={<CustomTooltip />}
+          wrapperStyle={{ outlineStyle: 'none' }}
+        />
+        <Line
+          type="natural"
+          dot={false}
+          dataKey="sessionLength"
+          stroke="#ffffff"
+          strokeWidth={3}
+          activeDot={{
+            stroke: 'rgba(255,255,255, 0.6)',
+            strokeWidth: 10,
+            r: 5,
+          }}
+          opacity={0.6}
+        />
+        <text x="8%" y="12%" fill="#FFFFFF" opacity="0.5" fontSize="14px">
+          Durée moyenne des
+        </text>
+        <text x="8%" y="20%" fill="#FFFFFF" opacity="0.5" fontSize="14px">
+          sessions
+        </text>
+      </LineChart>
+    </ResponsiveContainer>
   )
 }
 Linegraph.proTypes = {
   averageSessions: PropTypes.arrayOf(
     PropTypes.shape({
-      day: PropTypes.number,
+      day: PropTypes.string,
       sessionLength: PropTypes.number,
     })
   ),

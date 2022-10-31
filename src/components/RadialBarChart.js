@@ -13,11 +13,11 @@ function RadialChart({ userScore }) {
   const currentUserScore = userScore * 100
 
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer height={'100%'}>
       <RadialBarChart
         data={scoreValueScale}
-        innerRadius={80}
-        barSize={10}
+        innerRadius={'100%'}
+        barSize={12}
         startAngle={90}
         endAngle={-450}
         fill={'#E60000'}
@@ -29,7 +29,7 @@ function RadialChart({ userScore }) {
           cornerRadius={5}
           style={{ backgroundColor: '#FBFBFB' }}
         />
-        <circle cx="50%" cy="50%" fill="white" r="75"></circle>
+        <circle cx="50%" cy="50%" fill="white" r="32%"></circle>
         <text
           x="50%"
           y="45%"
@@ -50,7 +50,7 @@ function RadialChart({ userScore }) {
         >
           de votre objectif
         </text>
-        <text x="10%" y="15%" fill="black">
+        <text x="10%" y="15%" fill="black" fontSize="14px">
           Score
         </text>
       </RadialBarChart>

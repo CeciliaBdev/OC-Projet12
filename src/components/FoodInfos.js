@@ -11,7 +11,8 @@ function FoodInfos({ keyData }) {
       <div className="cardInfos">
         <img src={calories} alt="" />
         <div>
-          <p>{keyData?.calorieCount} Kcal</p>
+          {/* The toLocaleString() returns a number as a string, using local language format. */}
+          <p>{keyData?.calorieCount.toLocaleString('en-US')} Kcal</p>
           <span>Calories</span>
         </div>
       </div>

@@ -9,7 +9,9 @@ function UserInfos({ firstName }) {
       <h1>
         Bonjour <span style={{ color: 'red' }}>{firstName}</span>
       </h1>
-      <p>Félicitation ! Vous avez explosé vos objectifs hier 👏 </p>
+      <p style={{ marginTop: '15px' }}>
+        Félicitation ! Vous avez explosé vos objectifs hier 👏{' '}
+      </p>
     </div>
   )
 }

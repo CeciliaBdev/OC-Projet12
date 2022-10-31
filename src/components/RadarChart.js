@@ -29,7 +29,7 @@ function namePerf(kind) {
 }
 function Radargraph({ performance }) {
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer height={'100%'}>
       <RadarChart
         margin={{ top: 20, right: 20, bottom: 20, left: 70 }}
         style={{
@@ -37,9 +37,8 @@ function Radargraph({ performance }) {
           borderRadius: '5px',
         }}
         data={performance}
-        width={220}
-        height={224}
-        outerRadius={80}
+        width="100px"
+        outerRadius={'95%'}
       >
         <PolarGrid radialLines={false} />
 
@@ -48,9 +47,9 @@ function Radargraph({ performance }) {
           tickFormatter={namePerf}
           tickLine={false}
           axisLine={false}
-          dy={5}
+          dy={3}
           stroke="#FFF"
-          tick={{ fill: '#FFFFFF', fontSize: 13 }}
+          tick={{ fill: '#FFFFFF', fontSize: '12px' }}
         />
 
         <PolarRadiusAxis tick={false} tickCount={6} axisLine={false} />
