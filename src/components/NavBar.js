@@ -10,13 +10,20 @@ import '../styles/NavBar.css'
 function NavBar() {
   return (
     <div>
-      <div className="navbar">
+      {/* <div className="navbar">
         <img src={logo} alt="" />
         <a href="">Accueil</a>
         <a href="">Profil</a>
         <a href="">Réglage</a>
         <a href="">Communauté</a>
-      </div>
+      </div> */}
+      <nav className="navbar">
+        <img src={logo} alt="" />
+        <p>Accueil</p>
+        <p>Profil</p>
+        <p>Réglage</p>
+        <p>Communauté</p>
+      </nav>
       <div className="sidebar">
         <div className="icons_sport">
           <img src={icon_yoga} alt="" />

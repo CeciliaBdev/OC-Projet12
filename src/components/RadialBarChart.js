@@ -3,7 +3,6 @@ import {
   RadialBarChart,
   PolarAngleAxis,
   RadialBar,
-  Legend,
 } from 'recharts'
 function RadialChart({ userScore }) {
   const scoreValueScale = [

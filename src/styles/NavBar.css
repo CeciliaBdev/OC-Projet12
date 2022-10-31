@@ -8,8 +8,9 @@
   justify-content: space-between;
   padding: 0 30px;
 }
-.navbar a {
-  text-decoration: none;
+/* links a remplacés par des p */
+.navbar p {
+  /* text-decoration: none; */
   color: #fff;
   font-size: 18px;
 }
