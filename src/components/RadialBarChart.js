@@ -4,18 +4,34 @@ import {
   PolarAngleAxis,
   RadialBar,
 } from 'recharts'
-function RadialChart({ userScore }) {
-  const scoreValueScale = [
-    {
-      value: userScore * 100,
-    },
-  ]
-  const currentUserScore = userScore * 100
+import { useParams } from 'react-router'
+import { useState, useEffect } from 'react'
+import { getUserMainData } from '../services/callApi'
 
-  return (
+function RadialChart() {
+  const { id } = useParams()
+  const [userScore, setUserScore] = useState()
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    getUserMainData(id).then((items) => {
+      const formatedData = [
+        {
+          name: 'Score',
+          uv: items.score * 100,
+          pv: 2400,
+          fill: '#FF0000',
+        },
+      ]
+      setData(formatedData)
+      setUserScore(formatedData.map((fd) => fd.uv))
+    })
+  }, [id])
+
+  return data ? (
     <ResponsiveContainer height={'100%'}>
       <RadialBarChart
-        data={scoreValueScale}
+        data={data}
         innerRadius={'100%'}
         barSize={12}
         startAngle={90}
@@ -25,7 +41,7 @@ function RadialChart({ userScore }) {
       >
         <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
         <RadialBar
-          dataKey="value"
+          dataKey="uv"
           cornerRadius={5}
           style={{ backgroundColor: '#FBFBFB' }}
         />
@@ -38,7 +54,7 @@ function RadialChart({ userScore }) {
           fontWeight="700"
           fill="black"
         >
-          {currentUserScore}%
+          {userScore}%
         </text>
         <text
           x="50%"
@@ -55,7 +71,7 @@ function RadialChart({ userScore }) {
         </text>
       </RadialBarChart>
     </ResponsiveContainer>
-  )
+  ) : null
 }
 
 export default RadialChart

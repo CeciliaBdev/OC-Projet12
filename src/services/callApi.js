@@ -1,4 +1,8 @@
 import axios from 'axios'
+import { userMainData } from '../models/userMainData'
+import { userActivity } from '../models/userActivity'
+import { userAverageSession } from '../models/userAverageSession'
+import { userPerformance } from '../models/userPerformance'
 
 /*
  * @function getUserMainData
@@ -8,44 +12,36 @@ import axios from 'axios'
  */
 
 // infos user
-export const getUserMainData = async (id) => {
-  try {
-    const response = await axios.get(`http://localhost:3001/user/${id}`)
-    return response.data
-  } catch (error) {
-    console.log('error', error)
-  }
+export async function getUserMainData(userId) {
+  const baseUrl = `http://localhost:3001/user/${userId}`
+
+  const data = await fetch(baseUrl)
+  const dataJson = await data.json()
+  return new userMainData(dataJson)
 }
 // poids - calories
-export const getUserActivity = async (id) => {
-  try {
-    const response = await axios.get(
-      `http://localhost:3001/user/${id}/activity`
-    )
-    return response.data
-  } catch (error) {
-    console.log('error', error)
-  }
+export async function getUserActivity(userId) {
+  const baseUrl = `http://localhost:3001/user/${userId}/activity`
+
+  const data = await fetch(baseUrl)
+  const dataJson = await data.json()
+  return new userActivity(dataJson)
 }
+
 // moyenne sessions
-export const getUserAverageSession = async (id) => {
-  try {
-    const response = await axios.get(
-      `http://localhost:3001/user/${id}/average-sessions`
-    )
-    return response.data
-  } catch (error) {
-    console.log('error', error)
-  }
+export async function getUserAverageSession(userId) {
+  const baseUrl = `http://localhost:3001/user/${userId}/average-sessions`
+
+  const data = await fetch(baseUrl)
+  const dataJson = await data.json()
+  return new userAverageSession(dataJson)
 }
+
 //performance
-export const getUserPerformance = async (id) => {
-  try {
-    const response = await axios.get(
-      `http://localhost:3001/user/${id}/performance`
-    )
-    return response.data
-  } catch (error) {
-    console.log('error', error)
-  }
+export async function getUserPerformance(userId) {
+  const baseUrl = `http://localhost:3001/user/${userId}/performance`
+
+  const data = await fetch(baseUrl)
+  const dataJson = await data.json()
+  return new userPerformance(dataJson)
 }

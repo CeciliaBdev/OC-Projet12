@@ -8,6 +8,9 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import PropTypes from 'prop-types'
+import { getUserPerformance } from '../services/callApi'
+import { useParams } from 'react-router'
+import { useState, useEffect } from 'react'
 
 function namePerf(kind) {
   switch (kind) {
@@ -27,39 +30,51 @@ function namePerf(kind) {
       return null
   }
 }
-function Radargraph({ performance }) {
-  if (performance.length > 0) {
-    return (
-      <ResponsiveContainer height={'100%'}>
-        <RadarChart
-          margin={{ top: 20, right: 20, bottom: 20, left: 70 }}
-          style={{
-            backgroundColor: '#282D30',
-            borderRadius: '5px',
-          }}
-          data={performance}
-          width="100px"
-          outerRadius={'95%'}
-        >
-          <PolarGrid radialLines={false} />
+function Radargraph() {
+  const [performance, setPerformance] = useState([])
+  const { id } = useParams()
+  useEffect(() => {
+    getUserPerformance(id).then((datas) => {
+      // console.log(items)
+      if (datas.data) {
+        const formatData = datas.data.map((item) => ({
+          kind: datas.kind[item.kind],
+          value: item.value,
+        }))
+        setPerformance(formatData)
+      }
+    })
+  }, [id])
+  return performance.length > 0 ? (
+    <ResponsiveContainer height={'100%'}>
+      <RadarChart
+        margin={{ top: 20, right: 20, bottom: 20, left: 70 }}
+        style={{
+          backgroundColor: '#282D30',
+          borderRadius: '5px',
+        }}
+        data={performance}
+        width="100px"
+        outerRadius={'95%'}
+      >
+        <PolarGrid radialLines={false} />
 
-          <PolarAngleAxis
-            dataKey="kind"
-            tickFormatter={namePerf}
-            tickLine={false}
-            axisLine={false}
-            dy={3}
-            stroke="#FFF"
-            tick={{ fill: '#FFFFFF', fontSize: '12px' }}
-          />
+        <PolarAngleAxis
+          dataKey="kind"
+          tickFormatter={namePerf()}
+          tickLine={false}
+          axisLine={false}
+          dy={3}
+          stroke="#FFF"
+          tick={{ fill: '#FFFFFF', fontSize: '12px' }}
+        />
 
-          <PolarRadiusAxis tick={false} tickCount={6} axisLine={false} />
+        <PolarRadiusAxis tick={false} tickCount={6} axisLine={false} />
 
-          <Radar dataKey="value" fill="#FF0101B2" fillOpacity={0.9} />
-        </RadarChart>
-      </ResponsiveContainer>
-    )
-  }
+        <Radar dataKey="value" fill="#FF0101B2" fillOpacity={0.9} />
+      </RadarChart>
+    </ResponsiveContainer>
+  ) : null
 }
 
 Radargraph.propTypes = {

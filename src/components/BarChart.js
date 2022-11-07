@@ -9,6 +9,9 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import propTypes from 'prop-types'
+import { getUserActivity } from '../services/callApi'
+import { useParams } from 'react-router'
+import { useState, useEffect } from 'react'
 
 // données axe X - jour et non date entière
 const customTick = (day) => {
@@ -27,13 +30,29 @@ const customTooltip = ({ active, payload }) => {
   }
 }
 
-function Bargraph({ activity }) {
+function Bargraph() {
+  const [activityData, setActivity] = useState([])
+  const { id } = useParams()
+
+  useEffect(() => {
+    getUserActivity(id).then((items) => {
+      if (items) {
+        const formatData = items.sessions.map((activity) => ({
+          date: activity.day,
+          kg: activity.kilogram,
+          cal: activity.calories,
+        }))
+        setActivity(formatData)
+      }
+    })
+  }, [id])
+
   return (
     <div className="activity">
       <p>Activité quotidienne</p>
       <ResponsiveContainer>
         <BarChart
-          data={activity}
+          data={activityData}
           margin={{
             top: 5,
             right: 30,
@@ -44,7 +63,7 @@ function Bargraph({ activity }) {
         >
           <CartesianGrid strokeDasharray="3" vertical={false} />
           <XAxis
-            dataKey={'day'}
+            dataKey={'date'}
             tickLine={false}
             axisLine={false}
             domain={['dataMin + 1', 'dataMax + 1']}
@@ -81,7 +100,7 @@ function Bargraph({ activity }) {
             }}
           />
           <Bar
-            dataKey="kilogram"
+            dataKey="kg"
             fill="#282d30"
             radius={[5, 5, 0, 0]}
             barSize={7}
@@ -89,7 +108,7 @@ function Bargraph({ activity }) {
             yAxisId={1}
           />
           <Bar
-            dataKey="calories"
+            dataKey="cal"
             fill="#e60000"
             radius={[5, 5, 0, 0]}
             barSize={7}
