@@ -1,0 +1,18 @@
+.error_container {
+  position: absolute;
+  top: 120px;
+  left: 150px;
+  width: 80vw;
+  height: 90%;
+}
+h1,
+h2 {
+  text-align: center;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
