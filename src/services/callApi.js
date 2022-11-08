@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { userMainData } from '../models/userMainData'
 import { userActivity } from '../models/userActivity'
 import { userAverageSession } from '../models/userAverageSession'
