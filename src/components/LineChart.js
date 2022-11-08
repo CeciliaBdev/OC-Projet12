@@ -10,6 +10,7 @@ import {
 } from 'recharts'
 import { PropTypes } from 'prop-types'
 import { getUserAverageSession } from '../services/callApi'
+import { getUserAverageSessionMocked } from '../services/callDataMocked'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 
@@ -61,7 +62,7 @@ function Linegraph() {
   const [averageSessions, setAverageSessions] = useState([])
   const { id } = useParams()
   useEffect(() => {
-    getUserAverageSession(id).then((datas) => {
+    getUserAverageSessionMocked(id).then((datas) => {
       if (datas) {
         const formatData = datas.sessions.map((activity) => ({
           day: activity.day,
@@ -71,6 +72,18 @@ function Linegraph() {
       }
     })
   }, [id])
+
+  // useEffect(() => {
+  //   getUserAverageSession(id).then((datas) => {
+  //     if (datas) {
+  //       const formatData = datas.sessions.map((activity) => ({
+  //         day: activity.day,
+  //         sessionLength: activity.sessionLength,
+  //       }))
+  //       setAverageSessions(formatData)
+  //     }
+  //   })
+  // }, [id])
   return (
     <ResponsiveContainer height={'100%'} width={'100%'}>
       <LineChart

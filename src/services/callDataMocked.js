@@ -1,6 +1,7 @@
 import { userMainData } from '../models/userMainData'
 import { userActivity } from '../models/userActivity'
-import { USER_MAIN_DATA, USER_ACTIVITY } from './data.js'
+import { userAverageSession } from '../models/userAverageSession'
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS } from './data.js'
 
 export async function getUserMainDataMocked(userId) {
   // je cherche dans USER_MAIN_DATA un element qui correspond à l'userId
@@ -15,4 +16,10 @@ export async function getUserActivityMocked(id) {
   const mockedData = USER_ACTIVITY.find((el) => el.userId == id)
   const dataJson = { data: mockedData }
   return new userActivity(dataJson)
+}
+
+export async function getUserAverageSessionMocked(id) {
+  const mockedData = USER_AVERAGE_SESSIONS.find((el) => el.userId == id)
+  const dataJson = { data: mockedData }
+  return new userAverageSession(dataJson)
 }
