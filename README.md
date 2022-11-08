@@ -3,8 +3,9 @@
 ## SportSee
 SportSee, a startup dedicated to sports coaching. In full growth, the company will launch today a new version of the user profile page. This page will allow the user to track the number of sessions and the number of calories burned.
 
-![logo](file:///Users/ceciliabernard/Bureau/Exercices\ Formations/Formation\ Openclassrooms/projet12/src/assets/logo.svg)
-⁩ 
+![logo](./src/assets/logo.svg)
+![Alt tex](./src/assets/logo.svg)
+<img src="./src/assets/logo.svgg">⁩ 
 ## Install and run the projet
 
 ### With API
