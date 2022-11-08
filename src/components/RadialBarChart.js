@@ -7,6 +7,7 @@ import {
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 import { getUserMainData } from '../services/callApi'
+import { getUserMainDataMocked } from '../services/callDataMocked'
 
 function RadialChart() {
   const { id } = useParams()
@@ -14,7 +15,7 @@ function RadialChart() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    getUserMainData(id).then((items) => {
+    getUserMainDataMocked(id).then((items) => {
       const formatedData = [
         {
           name: 'Score',
@@ -27,6 +28,21 @@ function RadialChart() {
       setUserScore(formatedData.map((fd) => fd.uv))
     })
   }, [id])
+
+  // useEffect(() => {
+  //   getUserMainData(id).then((items) => {
+  //     const formatedData = [
+  //       {
+  //         name: 'Score',
+  //         uv: items.score * 100,
+  //         pv: 2400,
+  //         fill: '#FF0000',
+  //       },
+  //     ]
+  //     setData(formatedData)
+  //     setUserScore(formatedData.map((fd) => fd.uv))
+  //   })
+  // }, [id])
 
   return data ? (
     <ResponsiveContainer height={'100%'}>
