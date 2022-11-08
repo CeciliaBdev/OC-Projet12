@@ -10,6 +10,7 @@ import {
 } from 'recharts'
 import propTypes from 'prop-types'
 import { getUserActivity } from '../services/callApi'
+import { getUserActivityMocked } from '../services/callDataMocked'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 
@@ -35,7 +36,7 @@ function Bargraph() {
   const { id } = useParams()
 
   useEffect(() => {
-    getUserActivity(id).then((items) => {
+    getUserActivityMocked(id).then((items) => {
       if (items) {
         const formatData = items.sessions.map((activity) => ({
           date: activity.day,
@@ -46,6 +47,18 @@ function Bargraph() {
       }
     })
   }, [id])
+  // useEffect(() => {
+  //   getUserActivity(id).then((items) => {
+  //     if (items) {
+  //       const formatData = items.sessions.map((activity) => ({
+  //         date: activity.day,
+  //         kg: activity.kilogram,
+  //         cal: activity.calories,
+  //       }))
+  //       setActivity(formatData)
+  //     }
+  //   })
+  // }, [id])
 
   return (
     <div className="activity">
