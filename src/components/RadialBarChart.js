@@ -15,7 +15,9 @@ function RadialChart() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    getUserMainDataMocked(id).then((items) => {
+    getUserMainData(id).then((items) => {
+      // appel dataMocked
+      // getUserMainDataMocked(id).then((items) => {
       const formatedData = [
         {
           name: 'Score',
@@ -28,21 +30,6 @@ function RadialChart() {
       setUserScore(formatedData.map((fd) => fd.uv))
     })
   }, [id])
-
-  // useEffect(() => {
-  //   getUserMainData(id).then((items) => {
-  //     const formatedData = [
-  //       {
-  //         name: 'Score',
-  //         uv: items.score * 100,
-  //         pv: 2400,
-  //         fill: '#FF0000',
-  //       },
-  //     ]
-  //     setData(formatedData)
-  //     setUserScore(formatedData.map((fd) => fd.uv))
-  //   })
-  // }, [id])
 
   return data ? (
     <ResponsiveContainer height={'100%'}>

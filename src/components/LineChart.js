@@ -61,8 +61,11 @@ function CustomTooltip({ active, payload }) {
 function Linegraph() {
   const [averageSessions, setAverageSessions] = useState([])
   const { id } = useParams()
+
   useEffect(() => {
-    getUserAverageSessionMocked(id).then((datas) => {
+    getUserAverageSession(id).then((datas) => {
+      // call dataMocked
+      // getUserAverageSessionMocked(id).then((datas) => {
       if (datas) {
         const formatData = datas.sessions.map((activity) => ({
           day: activity.day,
@@ -73,17 +76,6 @@ function Linegraph() {
     })
   }, [id])
 
-  // useEffect(() => {
-  //   getUserAverageSession(id).then((datas) => {
-  //     if (datas) {
-  //       const formatData = datas.sessions.map((activity) => ({
-  //         day: activity.day,
-  //         sessionLength: activity.sessionLength,
-  //       }))
-  //       setAverageSessions(formatData)
-  //     }
-  //   })
-  // }, [id])
   return (
     <ResponsiveContainer height={'100%'} width={'100%'}>
       <LineChart

@@ -9,6 +9,13 @@ import {
   USER_PERFORMANCE,
 } from './data.js'
 
+/*
+ * @function getUserMainDataMocked
+ * @function getUserActivityMocked
+ * @function getUserAverageSessionMocked
+ * @function getUserPerformanceMocked
+ */
+
 export async function getUserMainDataMocked(userId) {
   // je cherche dans USER_MAIN_DATA un element qui correspond à l'userId
   // je remonte d'un niveau dans le json (data)

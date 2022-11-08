@@ -36,7 +36,9 @@ function Bargraph() {
   const { id } = useParams()
 
   useEffect(() => {
-    getUserActivityMocked(id).then((items) => {
+    getUserActivity(id).then((items) => {
+      // call dataMocked
+      // getUserActivityMocked(id).then((items) => {
       if (items) {
         const formatData = items.sessions.map((activity) => ({
           date: activity.day,
@@ -47,18 +49,6 @@ function Bargraph() {
       }
     })
   }, [id])
-  // useEffect(() => {
-  //   getUserActivity(id).then((items) => {
-  //     if (items) {
-  //       const formatData = items.sessions.map((activity) => ({
-  //         date: activity.day,
-  //         kg: activity.kilogram,
-  //         cal: activity.calories,
-  //       }))
-  //       setActivity(formatData)
-  //     }
-  //   })
-  // }, [id])
 
   return (
     <div className="activity">

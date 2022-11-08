@@ -21,30 +21,19 @@ function Profil() {
   const [error404, setError404] = useState(false)
 
   useEffect(() => {
-    getUserMainDataMocked(id)
+    getUserMainData(id)
+      // call dataMocked
+      // getUserMainDataMocked(id)
       .then((items) => {
         setData(items)
         setLoading(false)
       })
       .catch((error) => {
-        console.log('erreur api', error)
+        console.log('erreur api')
         setError404(true)
         setLoading(false)
       })
   }, [id])
-
-  // useEffect(() => {
-  //   getUserMainData(id)
-  //     .then((items) => {
-  //       setData(items)
-  //       setLoading(false)
-  //     })
-  //     .catch((error) => {
-  //       console.log('erreur api')
-  //       setError404(true)
-  //       setLoading(false)
-  //     })
-  // }, [id])
 
   return (
     <>
