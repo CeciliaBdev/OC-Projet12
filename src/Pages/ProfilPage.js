@@ -12,6 +12,7 @@ import '../styles/Dashboard.css'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { getUserMainData } from '../services/callApi.js'
+import { getUserMainDataMocked } from '../services/callDataMocked.js'
 
 function Profil() {
   const { id } = useParams()
@@ -20,17 +21,30 @@ function Profil() {
   const [error404, setError404] = useState(false)
 
   useEffect(() => {
-    getUserMainData(id)
+    getUserMainDataMocked(id)
       .then((items) => {
         setData(items)
         setLoading(false)
       })
       .catch((error) => {
-        console.log('erreur api')
+        console.log('erreur api', error)
         setError404(true)
         setLoading(false)
       })
   }, [id])
+
+  // useEffect(() => {
+  //   getUserMainData(id)
+  //     .then((items) => {
+  //       setData(items)
+  //       setLoading(false)
+  //     })
+  //     .catch((error) => {
+  //       console.log('erreur api')
+  //       setError404(true)
+  //       setLoading(false)
+  //     })
+  // }, [id])
 
   return (
     <>
