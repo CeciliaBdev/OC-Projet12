@@ -36,8 +36,9 @@ function Bargraph() {
   const { id } = useParams()
 
   useEffect(() => {
+    // ** call API ** //
     getUserActivity(id).then((items) => {
-      // call dataMocked
+      // ** call dataMocked ** //
       // getUserActivityMocked(id).then((items) => {
       if (items) {
         const formatData = items.sessions.map((activity) => ({

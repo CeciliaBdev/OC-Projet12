@@ -63,8 +63,9 @@ function Linegraph() {
   const { id } = useParams()
 
   useEffect(() => {
+    // ** call API ** //
     getUserAverageSession(id).then((datas) => {
-      // call dataMocked
+      // ** call dataMocked ** //
       // getUserAverageSessionMocked(id).then((datas) => {
       if (datas) {
         const formatData = datas.sessions.map((activity) => ({

@@ -21,8 +21,9 @@ function Profil() {
   const [error404, setError404] = useState(false)
 
   useEffect(() => {
+    // ** call API ** //
     getUserMainData(id)
-      // call dataMocked
+      // ** call dataMocked ** //
       // getUserMainDataMocked(id)
       .then((items) => {
         setData(items)

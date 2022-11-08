@@ -15,8 +15,9 @@ function RadialChart() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
+    // ** call API ** //
     getUserMainData(id).then((items) => {
-      // appel dataMocked
+      // ** call dataMocked ** //
       // getUserMainDataMocked(id).then((items) => {
       const formatedData = [
         {

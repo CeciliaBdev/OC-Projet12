@@ -36,8 +36,10 @@ function Radargraph() {
   const { id } = useParams()
 
   useEffect(() => {
-    getUserPerformanceMocked(id).then((datas) => {
-      // console.log(items)
+    // ** call API ** //
+    getUserPerformance(id).then((datas) => {
+      // ** call dataMocked ** //
+      // getUserPerformanceMocked(id).then((datas) => {
       if (datas.data) {
         const formatData = datas.data.map((item) => ({
           kind: datas.kind[item.kind],
@@ -47,19 +49,6 @@ function Radargraph() {
       }
     })
   }, [id])
-
-  // useEffect(() => {
-  //   getUserPerformance(id).then((datas) => {
-  //     // console.log(items)
-  //     if (datas.data) {
-  //       const formatData = datas.data.map((item) => ({
-  //         kind: datas.kind[item.kind],
-  //         value: item.value,
-  //       }))
-  //       setPerformance(formatData)
-  //     }
-  //   })
-  // }, [id])
 
   return performance.length > 0 ? (
     <ResponsiveContainer height={'100%'}>
