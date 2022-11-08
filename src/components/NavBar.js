@@ -6,13 +6,15 @@ import icon_yoga from '../assets/icon_yoga.svg'
 import copyright from '../assets/copyright.png'
 
 import '../styles/NavBar.css'
+import { Link } from 'react-router-dom'
 
 function NavBar() {
   return (
     <div>
       <div className="navbar">
         <img src={logo} alt="" />
-        <a href="#Accueil">Accueil</a>
+        <Link to="/">Accueil</Link>
+        {/* <a href="#Accueil">Accueil</a> */}
         <a href="#Profil">Profil</a>
         <a href="#Reglage">Réglage</a>
         <a href="#Commu">Communauté</a>
