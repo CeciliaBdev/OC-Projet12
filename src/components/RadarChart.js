@@ -9,6 +9,7 @@ import {
 } from 'recharts'
 import PropTypes from 'prop-types'
 import { getUserPerformance } from '../services/callApi'
+import { getUserPerformanceMocked } from '../services/callDataMocked'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 
@@ -33,8 +34,9 @@ function namePerf(kind) {
 function Radargraph() {
   const [performance, setPerformance] = useState([])
   const { id } = useParams()
+
   useEffect(() => {
-    getUserPerformance(id).then((datas) => {
+    getUserPerformanceMocked(id).then((datas) => {
       // console.log(items)
       if (datas.data) {
         const formatData = datas.data.map((item) => ({
@@ -45,6 +47,20 @@ function Radargraph() {
       }
     })
   }, [id])
+
+  // useEffect(() => {
+  //   getUserPerformance(id).then((datas) => {
+  //     // console.log(items)
+  //     if (datas.data) {
+  //       const formatData = datas.data.map((item) => ({
+  //         kind: datas.kind[item.kind],
+  //         value: item.value,
+  //       }))
+  //       setPerformance(formatData)
+  //     }
+  //   })
+  // }, [id])
+
   return performance.length > 0 ? (
     <ResponsiveContainer height={'100%'}>
       <RadarChart
