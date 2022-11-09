@@ -17,13 +17,13 @@ SportSee, a startup dedicated to sports coaching. In full growth, the company wi
 #### Install and Launch the front-end
 * Clone this repository `git clone https://github.com/CeciliaBdev/OC-Projet12.git`
 * Install the dependencies `npm install`
-*Launch the front-end on PORT=3000 `npm start`
+* Launch the front-end on PORT=3000 `npm start`
 
 ### With datas mocked
 * Stop the back-end 
 * Open theses files in the folder /components : ProfilPages.js, BarChart.js, LineChart.js, RadarChart.js, RadialBarChart.js
-*Comment the line under // ** call API ** //
-*Uncomment the line under // ** call dataMocked ** //
+* Comment the line under `// ** call API ** //`
+* Uncomment the line under `// ** call dataMocked ** //`
 * The app turns with the data mocked !
 
 ## Possible endpoints
