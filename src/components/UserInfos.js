@@ -3,6 +3,12 @@
 
 import propTypes from 'prop-types'
 
+/**
+ * @UserInfos
+ * @description the component for welcome user
+ * @param {string} firstName
+ * @returns {JSX.Element}
+ */
 function UserInfos({ firstName }) {
   return (
     <div>

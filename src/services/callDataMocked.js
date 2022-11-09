@@ -9,11 +9,14 @@ import {
   USER_PERFORMANCE,
 } from './data.js'
 
-/*
- * @function getUserMainDataMocked
- * @function getUserActivityMocked
- * @function getUserAverageSessionMocked
- * @function getUserPerformanceMocked
+/**
+ * all the functions that returns the  mocked data depending on the id
+ * @function getUserMainDataMocked firstname - score - key figures - global informations
+ * @function getUserActivityMocked daily activity: height, calories
+ * @function getUserAverageSessionMocked average sessions
+ * @function getUserPerformanceMocked performance
+ * @params {data : response}
+ * @returns new class
  */
 
 export async function getUserMainDataMocked(userId) {

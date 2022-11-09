@@ -14,12 +14,22 @@ import { getUserActivityMocked } from '../services/callDataMocked'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 
-// données axe X - jour et non date entière
+/**
+ * datas axis X
+ * @param {string} day
+ * @returns {string}
+ */
+
 const customTick = (day) => {
   // console.log(day.slice(9))
   return day.slice(9)
 }
-// stylisation custonTooltip
+
+/**
+ * @name customTooltip
+ * @description by hover: give height and calories per day
+ * @returns {JSX Element}
+ */
 const customTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
@@ -30,6 +40,16 @@ const customTooltip = ({ active, payload }) => {
     )
   }
 }
+
+/**
+ * @name BarGraph
+ * @description - give daily weight and daily burned calories per day
+ * @param {array} activityData
+ * @param {string} activity.day
+ * @param {number} activity.kilogram
+ * @param {number} activity.calories
+ * @returns {JSX.Element}
+ */
 
 function Bargraph() {
   const [activityData, setActivity] = useState([])

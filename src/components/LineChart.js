@@ -14,6 +14,11 @@ import { getUserAverageSessionMocked } from '../services/callDataMocked'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 
+/**
+ * @name Day
+ * @description transform number on letter
+ * @returns string ou null
+ */
 function Day(day) {
   switch (day) {
     case 1:
@@ -35,6 +40,12 @@ function Day(day) {
       return null
   }
 }
+/**
+ * @description realize the rectangle on the mouse over
+ * @param {number} width
+ * @param {number} height
+ * @returns {JSX.Element}
+ */
 function CustomCursor({ points }) {
   return (
     <Rectangle
@@ -46,7 +57,11 @@ function CustomCursor({ points }) {
     />
   )
 }
-
+/**
+ * @name CustomTooltip
+ * @description hover effect on the graph
+ * @returns {JSX.Element}
+ */
 function CustomTooltip({ active, payload }) {
   if (active && payload && payload.length) {
     return (
@@ -57,7 +72,14 @@ function CustomTooltip({ active, payload }) {
   }
   return null
 }
-
+/**
+ * @name Linegraph
+ * @description average of the sessions of the user
+ * @param {array} averageSessions
+ * @param {string} averageSessions.day
+ * @param {number} averageSessions.sessionLength
+ * @returns
+ */
 function Linegraph() {
   const [averageSessions, setAverageSessions] = useState([])
   const { id } = useParams()

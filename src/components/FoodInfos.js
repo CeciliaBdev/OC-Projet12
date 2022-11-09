@@ -5,6 +5,16 @@ import glucides from '../assets/glucides.png'
 import lipides from '../assets/lipides.png'
 import '../styles/Dashboard.css'
 
+/**
+ * @name FoodInfos
+ * @description card information of the user
+ * @param {{keyData : object}}
+ * @param {number} calorieCount
+ * @param {number} proteinCount
+ * @param {number} carbohydrateCount
+ * @param {number} lipidCount
+ * @returns {JSX.Element}
+ */
 function FoodInfos({ keyData }) {
   return (
     <div className="containerInfos">

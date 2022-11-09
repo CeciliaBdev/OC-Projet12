@@ -8,6 +8,11 @@ import copyright from '../assets/copyright.png'
 import '../styles/NavBar.css'
 import { Link } from 'react-router-dom'
 
+/**
+ * @name NavBar
+ * @description component for browsing
+ * @returns {JSX.Element}
+ */
 function NavBar() {
   return (
     <div>

@@ -9,6 +9,12 @@ import { useState, useEffect } from 'react'
 import { getUserMainData } from '../services/callApi'
 import { getUserMainDataMocked } from '../services/callDataMocked'
 
+/**
+ * @name RadialChart
+ * @description graph who returns progress against target
+ * @param {number} userScore
+ * @returns {JSX.Element}
+ */
 function RadialChart() {
   const { id } = useParams()
   const [userScore, setUserScore] = useState()

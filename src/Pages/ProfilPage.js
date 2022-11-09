@@ -14,6 +14,15 @@ import { useParams } from 'react-router'
 import { getUserMainData } from '../services/callApi.js'
 import { getUserMainDataMocked } from '../services/callDataMocked.js'
 
+/**
+ * @name Profil
+ * @description page who called all the dashboard's components
+ * @param {string} id
+ * @param {object} data
+ * @param {boolean} setLoading
+ * @param { boolean} setError404
+ * @returns {JSX.Element}
+ */
 function Profil() {
   const { id } = useParams()
   const [data, setData] = useState(null)

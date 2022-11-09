@@ -13,6 +13,11 @@ import { getUserPerformanceMocked } from '../services/callDataMocked'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 
+/**
+ * @name namePerf
+ * @description transform a number on string
+ * @returns string or null
+ */
 function namePerf(kind) {
   switch (kind) {
     case 1:
@@ -31,6 +36,15 @@ function namePerf(kind) {
       return null
   }
 }
+/**
+ * @name Radargraph
+ * @description global performance for the user
+ * intensity - speed - strength - endurance - energy - cardio
+ * @param {array} performance
+ * @param {number} performance.value
+ * @param {string} performance.kind
+ * @returns {JSX.Element}
+ */
 function Radargraph() {
   const [performance, setPerformance] = useState([])
   const { id } = useParams()
@@ -86,7 +100,7 @@ Radargraph.propTypes = {
   performance: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.number.isRequired,
-      kind: PropTypes.number.isRequired,
+      kind: PropTypes.string.isRequired,
     })
   ),
 }

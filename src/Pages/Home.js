@@ -5,6 +5,11 @@ import '../styles/Home.css'
 import avatar_homme from '../assets/avatar_homme.jpeg'
 import avatar_femme from '../assets/avatar_femme.jpeg'
 
+/**
+ * @name Home
+ * @description homepage
+ * @returns {JSX.Element}
+ */
 function Accueil() {
   return (
     <div className="home">
