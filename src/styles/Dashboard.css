@@ -39,6 +39,9 @@
 .cardInfos p {
   font-weight: bold;
 }
+.cardInfos span {
+  color: #74798c;
+}
 .graph_container {
   width: 75%;
   height: 98%;
@@ -54,9 +57,9 @@
 }
 .activity p {
   position: relative;
-  top: 10px;
+  top: 15px;
   left: 20px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .customTooltip {
@@ -89,4 +92,17 @@
   /* border: 1px solid red; */
   width: 32%;
   height: 100%;
+}
+
+/* circle score chart */
+@media screen and (max-width: 1024px) {
+  .circle {
+    transform: scale(1);
+  }
+}
+@media screen and (min-width: 1040px) {
+  .circle {
+    transform-origin: 45%;
+    transform: scale(1.14);
+  }
 }

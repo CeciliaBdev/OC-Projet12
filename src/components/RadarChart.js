@@ -14,29 +14,6 @@ import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 
 /**
- * @name namePerf
- * @description transform a number on string
- * @returns string or null
- */
-function namePerf(kind) {
-  switch (kind) {
-    case 1:
-      return 'Intensité'
-    case 2:
-      return 'Vitesse'
-    case 3:
-      return 'Force'
-    case 4:
-      return 'Endurance'
-    case 5:
-      return 'Energie'
-    case 6:
-      return 'Cardio'
-    default:
-      return null
-  }
-}
-/**
  * @name Radargraph
  * @description global performance for the user
  * intensity - speed - strength - endurance - energy - cardio
@@ -59,6 +36,7 @@ function Radargraph() {
           kind: datas.kind[item.kind],
           value: item.value,
         }))
+        // console.log(formatData)
         setPerformance(formatData)
       }
     })
@@ -67,7 +45,7 @@ function Radargraph() {
   return performance.length > 0 ? (
     <ResponsiveContainer height={'100%'}>
       <RadarChart
-        margin={{ top: 20, right: 20, bottom: 20, left: 70 }}
+        margin={{ top: 20, right: 40, bottom: 20, left: 70 }}
         style={{
           backgroundColor: '#282D30',
           borderRadius: '5px',
@@ -80,10 +58,10 @@ function Radargraph() {
 
         <PolarAngleAxis
           dataKey="kind"
-          tickFormatter={namePerf()}
           tickLine={false}
           axisLine={false}
-          dy={3}
+          dy={2}
+          dx={-3}
           stroke="#FFF"
           tick={{ fill: '#FFFFFF', fontSize: '12px' }}
         />

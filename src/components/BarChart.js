@@ -78,9 +78,9 @@ function Bargraph() {
         <BarChart
           data={activityData}
           margin={{
-            top: 5,
+            top: 50,
             right: 30,
-            left: 20,
+            left: 40,
             bottom: 5,
           }}
           barGap={8}
@@ -92,7 +92,7 @@ function Bargraph() {
             axisLine={false}
             domain={['dataMin + 1', 'dataMax + 1']}
             tickFormatter={customTick}
-            padding={{ left: -40, right: -40 }}
+            padding={{ left: -50, right: -50 }}
           />
           <YAxis
             orientation="right"
@@ -118,9 +118,9 @@ function Bargraph() {
             iconType="circle"
             iconSize="6px"
             wrapperStyle={{
-              fontSize: '10px',
-              marginTop: '-15px',
-              marginRight: '20px',
+              fontSize: '14px',
+              marginTop: '-45px',
+              marginRight: '10px',
             }}
           />
           <Bar

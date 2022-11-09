@@ -29,7 +29,7 @@ function RadialChart() {
         {
           name: 'Score',
           uv: items.score * 100,
-          pv: 2400,
+          // pv: 2400,
           fill: '#FF0000',
         },
       ]
@@ -42,12 +42,12 @@ function RadialChart() {
     <ResponsiveContainer height={'100%'}>
       <RadialBarChart
         data={data}
-        innerRadius={'100%'}
-        barSize={12}
+        innerRadius={'70%'}
+        barSize={20}
         startAngle={90}
-        endAngle={-450}
+        endAngle={450}
         fill={'#E60000'}
-        style={{ backgroundColor: '#FBFBFB', borderRadius: '5px' }}
+        style={{ backgroundColor: '#FBFBFB', borderRadius: '10px' }}
       >
         <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
         <RadialBar
@@ -55,7 +55,13 @@ function RadialChart() {
           cornerRadius={5}
           style={{ backgroundColor: '#FBFBFB' }}
         />
-        <circle cx="50%" cy="50%" fill="white" r="32%"></circle>
+        <circle
+          cx="50%"
+          cy="50%"
+          fill="white"
+          r="27%"
+          className="circle"
+        ></circle>
         <text
           x="50%"
           y="45%"
@@ -70,7 +76,7 @@ function RadialChart() {
           x="50%"
           y="55%"
           textAnchor="middle"
-          fontSize="16"
+          fontSize="14"
           fill="#74798C"
           fontWeight="500"
         >
