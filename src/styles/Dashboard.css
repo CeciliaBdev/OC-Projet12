@@ -3,11 +3,11 @@
   position: absolute;
   top: 120px;
   left: 150px;
-  width: 80vw;
-  height: 90%;
+  width: 82vw;
+  height: 85%;
 }
 .dashboard {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
   gap: 20px;

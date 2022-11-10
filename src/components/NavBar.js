@@ -31,7 +31,13 @@ function NavBar() {
         <p>Réglage</p>
         <p>Communauté</p>
       </nav> */}
-      <div className="sidebar">
+      <div
+        className="sidebar"
+        style={{
+          position: 'absolute',
+          top: '0',
+        }}
+      >
         <div className="icons_sport">
           <img src={icon_yoga} alt="" />
           <img src={icon_swim} alt="" />
@@ -43,7 +49,7 @@ function NavBar() {
           alt=""
           style={{
             position: 'absolute',
-            bottom: '-70px',
+            bottom: '20px',
             left: '25px',
           }}
         />

@@ -105,7 +105,7 @@ function Linegraph() {
         width={'100%'}
         height={265}
         data={averageSessions}
-        margin={{ top: 50, right: 10, left: -50, bottom: 10 }}
+        margin={{ top: 50, right: 0, left: -60, bottom: 10 }}
         style={{ backgroundColor: '#FF0000', borderRadius: '5px' }}
       >
         <CartesianGrid vertical={false} horizontal={false} />
