@@ -7,11 +7,11 @@
   height: 85%;
 }
 .dashboard {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  height: 80%;
+  height: 78%;
   width: 100%;
   /* border: 1px solid red; */
 }
