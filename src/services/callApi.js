@@ -16,7 +16,9 @@ import { userPerformance } from '../models/userPerformance'
 export async function getUserMainData(userId) {
   const baseUrl = `http://localhost:3001/user/${userId}`
   const data = await fetch(baseUrl)
+  // console.log(data)
   const dataJson = await data.json()
+  // console.log(dataJson)
   return new userMainData(dataJson)
 }
 

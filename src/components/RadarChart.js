@@ -12,6 +12,7 @@ import { getUserPerformance } from '../services/callApi'
 import { getUserPerformanceMocked } from '../services/callDataMocked'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
+import Error from '../components/Error.js'
 
 /**
  * @name Radargraph
@@ -25,53 +26,69 @@ import { useState, useEffect } from 'react'
 function Radargraph() {
   const [performance, setPerformance] = useState([])
   const { id } = useParams()
+  const [error404, setError404] = useState(false)
 
   useEffect(() => {
     // ** call API ** //
-    getUserPerformance(id).then((datas) => {
-      // ** call dataMocked ** //
-      // getUserPerformanceMocked(id).then((datas) => {
-      if (datas.data) {
-        const formatData = datas.data.map((item) => ({
-          kind: datas.kind[item.kind],
-          value: item.value,
-        }))
-        // console.log(formatData)
-        setPerformance(formatData)
-      }
-    })
+    getUserPerformance(id)
+      .then((datas) => {
+        // ** call dataMocked ** //
+        // getUserPerformanceMocked(id).then((datas) => {
+        if (datas.data) {
+          const formatData = datas.data.map((item) => ({
+            kind: datas.kind[item.kind],
+            value: item.value,
+          }))
+          // console.log(formatData)
+          setPerformance(formatData)
+        }
+      })
+      .catch((error) => {
+        console.log('erreur api')
+        setError404(true)
+      })
   }, [id])
 
-  return performance.length > 0 ? (
-    <ResponsiveContainer height={'100%'}>
-      <RadarChart
-        margin={{ top: 20, right: 40, bottom: 20, left: 70 }}
-        style={{
-          backgroundColor: '#282D30',
-          borderRadius: '5px',
-        }}
-        data={performance}
-        width="100px"
-        outerRadius={'95%'}
-      >
-        <PolarGrid radialLines={false} />
+  return (
+    <>
+      {(() => {
+        if (error404 === true) {
+          return <Error />
+        } else {
+          return performance.length > 0 ? (
+            <ResponsiveContainer height={'100%'}>
+              <RadarChart
+                margin={{ top: 20, right: 40, bottom: 20, left: 70 }}
+                style={{
+                  backgroundColor: '#282D30',
+                  borderRadius: '5px',
+                }}
+                data={performance}
+                width="100px"
+                outerRadius={'95%'}
+              >
+                <PolarGrid radialLines={false} />
 
-        <PolarAngleAxis
-          dataKey="kind"
-          tickLine={false}
-          axisLine={false}
-          dy={2}
-          dx={-3}
-          stroke="#FFF"
-          tick={{ fill: '#FFFFFF', fontSize: '12px' }}
-        />
+                <PolarAngleAxis
+                  dataKey="kind"
+                  tickLine={false}
+                  axisLine={false}
+                  dy={2}
+                  dx={-3}
+                  stroke="#FFF"
+                  tick={{ fill: '#FFFFFF', fontSize: '12px' }}
+                />
 
-        <PolarRadiusAxis tick={false} tickCount={6} axisLine={false} />
+                <PolarRadiusAxis tick={false} tickCount={6} axisLine={false} />
 
-        <Radar dataKey="value" fill="#FF0101B2" fillOpacity={0.9} />
-      </RadarChart>
-    </ResponsiveContainer>
-  ) : null
+                <Radar dataKey="value" fill="#FF0101B2" fillOpacity={0.9} />
+              </RadarChart>
+            </ResponsiveContainer>
+          ) : null
+        }
+      })()}
+    </>
+  )
 }
 
 Radargraph.propTypes = {

@@ -13,6 +13,7 @@ import { getUserAverageSession } from '../services/callApi'
 import { getUserAverageSessionMocked } from '../services/callDataMocked'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
+import Error from '../components/Error.js'
 
 /**
  * @name Day
@@ -83,80 +84,109 @@ function CustomTooltip({ active, payload }) {
 function Linegraph() {
   const [averageSessions, setAverageSessions] = useState([])
   const { id } = useParams()
+  const [error404, setError404] = useState(false)
 
   useEffect(() => {
     // ** call API ** //
-    getUserAverageSession(id).then((datas) => {
-      // ** call dataMocked ** //
-      // getUserAverageSessionMocked(id).then((datas) => {
-      if (datas) {
-        const formatData = datas.sessions.map((activity) => ({
-          day: activity.day,
-          sessionLength: activity.sessionLength,
-        }))
-        setAverageSessions(formatData)
-      }
-    })
+    getUserAverageSession(id)
+      .then((datas) => {
+        // ** call dataMocked ** //
+        // getUserAverageSessionMocked(id).then((datas) => {
+        if (datas) {
+          const formatData = datas.sessions.map((activity) => ({
+            day: activity.day,
+            sessionLength: activity.sessionLength,
+          }))
+          setAverageSessions(formatData)
+        }
+      })
+      .catch((error) => {
+        console.log('erreur api')
+        setError404(true)
+      })
   }, [id])
 
   return (
-    <ResponsiveContainer height={'100%'} width={'100%'}>
-      <LineChart
-        width={'100%'}
-        height={265}
-        data={averageSessions}
-        margin={{ top: 50, right: 0, left: -60, bottom: 10 }}
-        style={{ backgroundColor: '#FF0000', borderRadius: '5px' }}
-      >
-        <CartesianGrid vertical={false} horizontal={false} />
-        <XAxis
-          dataKey="day"
-          tickFormatter={Day}
-          interval="preserveStartEnd"
-          tickLine={false}
-          axisLine={false}
-          tick={{
-            fill: '#FFFFFF',
-            fontWeight: 500,
-            fontSize: 12,
-          }}
-          opacity={0.5}
-        />
-        <YAxis
-          dataKey="sessionLength"
-          axisLine={false}
-          tickLine={false}
-          tick={false}
-          domain={['dataMin - 10', 'dataMax + 5']}
-        />
-        <Tooltip
-          cursor={<CustomCursor />}
-          content={<CustomTooltip />}
-          wrapperStyle={{ outlineStyle: 'none' }}
-        />
-        <Line
-          type="natural"
-          dot={false}
-          dataKey="sessionLength"
-          stroke="#ffffff"
-          strokeWidth={3}
-          activeDot={{
-            stroke: 'rgba(255,255,255, 0.6)',
-            strokeWidth: 10,
-            r: 5,
-          }}
-          opacity={0.6}
-        />
-        <text x="8%" y="12%" fill="#FFFFFF" opacity="0.5" fontSize="14px">
-          Durée moyenne des
-        </text>
-        <text x="8%" y="20%" fill="#FFFFFF" opacity="0.5" fontSize="14px">
-          sessions
-        </text>
-      </LineChart>
-    </ResponsiveContainer>
+    <>
+      {(() => {
+        if (error404 === true) {
+          return <Error />
+        } else {
+          return averageSessions.length > 0 ? (
+            <ResponsiveContainer height={'100%'} width={'100%'}>
+              <LineChart
+                width={'100%'}
+                height={265}
+                data={averageSessions}
+                margin={{ top: 50, right: 0, left: -60, bottom: 10 }}
+                style={{ backgroundColor: '#FF0000', borderRadius: '5px' }}
+              >
+                <CartesianGrid vertical={false} horizontal={false} />
+                <XAxis
+                  dataKey="day"
+                  tickFormatter={Day}
+                  interval="preserveStartEnd"
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{
+                    fill: '#FFFFFF',
+                    fontWeight: 500,
+                    fontSize: 12,
+                  }}
+                  opacity={0.5}
+                />
+                <YAxis
+                  dataKey="sessionLength"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={false}
+                  domain={['dataMin - 10', 'dataMax + 5']}
+                />
+                <Tooltip
+                  cursor={<CustomCursor />}
+                  content={<CustomTooltip />}
+                  wrapperStyle={{ outlineStyle: 'none' }}
+                />
+                <Line
+                  type="natural"
+                  dot={false}
+                  dataKey="sessionLength"
+                  stroke="#ffffff"
+                  strokeWidth={3}
+                  activeDot={{
+                    stroke: 'rgba(255,255,255, 0.6)',
+                    strokeWidth: 10,
+                    r: 5,
+                  }}
+                  opacity={0.6}
+                />
+                <text
+                  x="8%"
+                  y="12%"
+                  fill="#FFFFFF"
+                  opacity="0.5"
+                  fontSize="14px"
+                >
+                  Durée moyenne des
+                </text>
+                <text
+                  x="8%"
+                  y="20%"
+                  fill="#FFFFFF"
+                  opacity="0.5"
+                  fontSize="14px"
+                >
+                  sessions
+                </text>
+              </LineChart>
+            </ResponsiveContainer>
+          ) : null
+        }
+      })()}
+    </>
   )
 }
+
 Linegraph.proTypes = {
   averageSessions: PropTypes.arrayOf(
     PropTypes.shape({
